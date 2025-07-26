@@ -2,14 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy dependency manifests only
-COPY package.json package-lock.json ./
+# If only package.json exists:
+COPY package.json ./
 
-# Install dependencies first
+# If package-lock.json exists:
+# COPY package-lock.json ./
+
 RUN npm install
 
-# Copy rest of the application
 COPY . .
 
-# Build or run Strapi
-CMD ["npm", "start"]
+RUN npm run build
+
+EXPOSE 1337
+CMD ["npm", "run", "start"]
