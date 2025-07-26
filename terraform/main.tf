@@ -4,7 +4,7 @@ resource "aws_instance" "StrapiEC2" {
    key_name      = naveen-key-pair  # Provided to Terraform
   user_data = <<-EOF
               #!/bin/bash
-              docker run -d -p 80:1337 your-dockerhub-username/strapi-app:latest
+              docker run -d -p 80:1337 balagouninaveen/strapi-app:latest
               EOF
 
   tags = {
