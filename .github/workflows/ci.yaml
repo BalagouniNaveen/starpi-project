@@ -1,5 +1,4 @@
 name: CI -  Build & Push Strapi Docker
-
 on:
   push:
     branches:
