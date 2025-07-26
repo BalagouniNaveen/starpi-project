@@ -1,23 +1,15 @@
-# Use an official Node.js runtime as a parent image
 FROM node:18-alpine
 
-# Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available) to the working directory
-COPY package*.json ./
+# Copy dependency manifests only
+COPY package.json package-lock.json ./
 
-# Install project dependencies
+# Install dependencies first
 RUN npm install
 
-# Copy the rest of the application code
+# Copy rest of the application
 COPY . .
 
-# Run the build script
-RUN npm run build
-
-# Expose the port your application runs on
-EXPOSE 1337
-
-# Define the command to run your application
+# Build or run Strapi
 CMD ["npm", "start"]
