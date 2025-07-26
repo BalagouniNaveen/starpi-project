@@ -32,5 +32,3 @@ jobs:
           docker build -t $IMAGE:${{ steps.get_tag.outputs.image_tag }} .
           docker push $IMAGE:${{ steps.get_tag.outputs.image_tag }}
 
-
-          
